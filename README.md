@@ -13,7 +13,17 @@
 # List all available commands
     python -m cli.main --help
 
-# Set EV 
+# Set EVN variables
     export GCP_PROJECT_ID="supersecretpassword" SPANNER_INSTANCE_ID="supersecretpassword" SPANNER_DATABASE_ID="supersecretpassword"
+
+# docker build
+    docker build --no-cache -t da-su-framwork:latest .
+
+# docker run 
+    docker run -p 8080:8080 da-su-framwork:latest
+
+# Open a shell inside the container 
+    docker exec -it <container_id> /bin/bash
+
 
 
