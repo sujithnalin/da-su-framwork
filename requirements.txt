@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+typer
+google-cloud-spanner
+google-cloud-bigquery
+apache-airflow==2.8.1
+google-cloud-spanner==3.47.0
+pydantic-settings==2.12.0
+google-cloud-bigquery-storage ==2.36.0 
+typer== 0.21.0
+

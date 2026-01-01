@@ -1,0 +1,125 @@
+# =====================================================
+# Python generated files
+# =====================================================
+
+# Python bytecode cache directories
+__pycache__/
+
+# Compiled Python files
+*.py[cod]
+*.pyo
+*.pyd
+
+# Python package / build metadata
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Environment variable files (never commit secrets)
+.env
+.env.*
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+# =====================================================
+# FastAPI / Uvicorn logs
+# =====================================================
+
+# General log files
+*.log
+
+# Uvicorn specific log file (if configured)
+uvicorn.log
+
+# =====================================================
+# Terraform files
+# =====================================================
+
+# Terraform working directory (providers, modules, cache)
+.terraform/
+
+# Terraform state files (contain sensitive infra data)
+*.tfstate
+*.tfstate.*
+
+# Terraform dependency lock file
+# Uncomment this line if you WANT to commit the lock file
+.terraform.lock.hcl
+# .terraform.lock.hcl
+
+# =====================================================
+# GCP / Credentials (VERY IMPORTANT)
+# =====================================================
+
+# Ignore all JSON files by default (safety)
+*.json
+
+# Allow common non-secret JSON files (whitelist)
+!package.json
+!tsconfig.json
+
+# Explicit patterns for service account keys
+*service-account*.json
+*sa-key*.json
+*credentials*.json
+
+# =====================================================
+# Docker
+# =====================================================
+
+# Docker image archives
+*.tar
+
+# Local Docker Compose overrides
+docker-compose.override.yml
+
+# =====================================================
+# GitHub Actions
+# =====================================================
+
+# Workflow execution logs (if generated)
+.github/workflows/*.log
+
+# =====================================================
+# OS / Editor generated files
+# =====================================================
+
+# macOS metadata files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# IntelliJ / PyCharm settings
+.idea/
+
+# Vim temporary files
+*.swp
+*.swo
+
+# =====================================================
+# Testing / Coverage
+# =====================================================
+
+# Python coverage reports
+.coverage
+htmlcov/
+
+# Pytest cache directory
+.pytest_cache/
+
+# =====================================================
+# Build / Distribution artifacts
+# =====================================================
+
+# Node modules (if frontend exists)
+node_modules/
+
+# Python / frontend build outputs
+dist/
+build/
