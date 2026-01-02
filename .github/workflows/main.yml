@@ -1,0 +1,40 @@
+name: Build & Push to Artifact Registry
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   
+
+    env:
+      PROJECT_ID: sujith-learning-hub
+      REGION: us-central1
+      REPOSITORY: cicd
+      IMAGE_NAME: da-su-framwork
+      IMAGE_TAG: ${{ github.sha }}
+      IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 🔐 Authenticate using Workload Identity Federation
+      - name: Auth to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/467140585928/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          service_account: cicd-314@sujith-learning-hub.iam.gserviceaccount.com
+          
+      # 🐳 Allow Docker to push to Artifact Registry
+      - name: Configure Docker
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+      # 📦 Build & push image
+      - name: Build and Push
+        run: |
+          docker build -t $IMAGE .
+          docker push $IMAGE
