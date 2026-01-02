@@ -17,7 +17,7 @@ jobs:
       REPOSITORY: cicd
       IMAGE_NAME: da-su-framwork
       IMAGE_TAG: ${{ github.sha }}
-      IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+      # IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
     steps:
       - uses: actions/checkout@v4
@@ -36,5 +36,6 @@ jobs:
       # 📦 Build & push image
       - name: Build and Push
         run: |
-          docker build -t $IMAGE .
-          docker push $IMAGE
+          IMAGE="$REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:$IMAGE_TAG"
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
